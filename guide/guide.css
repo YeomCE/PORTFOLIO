@@ -1,0 +1,29 @@
+*{margin:0; padding:0;}
+ul{list-style:none; 
+position:fixed;
+bottom:50px;
+right:50px;
+text-align:center;}
+ul li{
+    margin: 10px;
+}
+ul li a{
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.Aroma_Record_btn li a{
+    background: #fffbea;
+}
+
+.Aroma_Record_btn li a:hover{
+    background: #fdc689;
+    color: #fffbea;
+}
+a{text-decoration:none; color:#fdc689; font-weight: bold;}
+img{width:100%; display: block;}
+
+.center{
+    margin: 100px 0;
+}
