@@ -1100,6 +1100,20 @@ footer {
         width: 90%;
     }
 }
+@media (max-width:610px) {
+    #project .slide08 .button{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    #project .slide08 .button button{
+        margin-right: 0;
+        width: 49%;
+    }
+    #project .slide08 .button button.page{
+        margin-bottom: 5px;
+    }
+}
 @media (max-width:600px) {
     section#skills {
         width: 100%;
@@ -1142,6 +1156,12 @@ footer {
     
     #skills .using-box ul li .title{
         display: none;
+    }
+}
+@media (max-width:430px) {
+    #project .slide08 .button button {
+        width: 100%;
+        margin-bottom: 5px;
     }
 }
 @media (max-width:400px) {
