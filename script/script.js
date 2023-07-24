@@ -76,7 +76,6 @@ function scrollHandler() {
             menuBtn.classList.add('color')
             logoImg.setAttribute('src', "images/logo-black.png")
         }
-        console.log("!!")
     }
     else {
         for (let i = 0; i < nav.length; i++) {
@@ -124,11 +123,27 @@ let startNum = 0;
 let curIndex = startNum;
 let curSlide = slideContents[curIndex];
 
+window.addEventListener(`resize`, function() {
+    slideWidth = slideWrap.offsetWidth;
+    slideList.style.width = slideWidth * (slideLen + 2) + "px";
+    slideContents = document.querySelectorAll('.slide-content');
+
+    for(let i = 0 ; i < slideLen ; i++){
+        slideContents[i].style.width = slideWidth + "px";
+        slideContents[i].firstElementChild.style.width = slideWidth + "px";
+    }
+    slideBox.style.height = slideContents[curIndex + 1].offsetHeight + 'px'
+    slideList.style.transform = "translate3d(-" + (slideWidth * (startNum + 1)) + "px, 0px, 0px)";
+    
+});
 slideList.style.width = slideWidth * (slideLen + 2) + "px";
 for(let i = 0 ; i < slideLen ; i++){
     slideContents[i].style.width = slideWidth + "px";
+    slideContents[i].firstElementChild.style.width = slideWidth + "px";
 }
-slideBox.style.height = slideContents[curIndex].offsetHeight + 'px'
+setTimeout(function(){
+    slideBox.style.height = slideContents[startNum].clientHeight + 'px'
+},100)
 
 
 	
@@ -160,7 +175,9 @@ let pageDots = pagination.childNodes
 
 
 // ---------------- PROJECT slide NextButton
-slideBtnNext.addEventListener('click', function(){
+slideBtnNext.addEventListener('click', next)
+function next(){
+    console.log('slideWidth',slideWidth)
     if(curIndex <= slideLen - 1){ // 0 1 2 3 4 
         slideList.style.transition = slideSpeed + 'ms';
         slideList.style.transform = 'translate3d(-' + (slideWidth * (curIndex + 2)) + 'px, 0px, 0px)';
@@ -178,11 +195,13 @@ slideBtnNext.addEventListener('click', function(){
     curSlide.classList.add('slide-active');
     pageDots[curIndex].classList.add('dot-active');
     slideBox.style.height = slideContents[curIndex].offsetHeight + 'px'
-})
+}
 
 
 // ---------------- PROJECT slide PrevButton
-slideBtnPrev.addEventListener('click', function(){
+slideBtnPrev.addEventListener('click', prev)
+
+function prev(){
     if(curIndex >= 0){
         slideList.style.transition = slideSpeed + 'ms';
         slideList.style.transform = 'translate3d(-' +(slideWidth * curIndex) + 'px, 0px, 0px)';
@@ -200,7 +219,46 @@ slideBtnPrev.addEventListener('click', function(){
     curSlide.classList.add('slide-active');
     pageDots[curIndex].classList.add('dot-active');
     slideBox.style.height = slideContents[curIndex].offsetHeight + 'px'
-})
+}
+
+///
+let mouseStart
+let mouseMove
+let mouseEnd
+let mouseDistance
+
+let click = false;
+slideBox.addEventListener('mousedown', function (e) {
+    mouseStart = e.clientX
+    click = true;
+});
+slideBox.addEventListener('touchstart', function (e) {
+    mouseStart = e.touches[0].clientX
+    click = true;
+});
+slideBox.addEventListener('mouseup', function (e) {
+    mouseEnd = e.clientX
+    mouseDistance = mouseEnd - mouseStart;
+    click = false;
+    if (mouseDistance > 100) {
+        prev();
+    }
+    if (mouseDistance < -100) {
+        next();
+    }
+});
+slideBox.addEventListener('touchend', function (e) {
+    mouseEnd = e.changedTouches[0].clientX
+    mouseDistance = mouseEnd - mouseStart;
+    click = false;
+    if (mouseDistance > 100) {
+        prev();
+    }
+    if (mouseDistance < -100) {
+        next();
+    }
+});
+
 
 // ---------------- PROJECT pagination click
 let curDot;
