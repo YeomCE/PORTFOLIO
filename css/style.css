@@ -350,6 +350,7 @@ section {
     box-shadow: 1px 1px 5px #ececec;
     border-radius: 10px;
     box-sizing: border-box;
+    pointer-events: none;
 }
 
 #skills .skill-box ul li:nth-child(1) .detail {
