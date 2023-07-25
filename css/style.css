@@ -672,8 +672,10 @@ section {
     border: none;
     padding: 5px 10px;
     background-color: #0170ba;
-    color: white;
     cursor: pointer;
+}
+#project .danger-box button a {
+    color: white;
 }
 
 
