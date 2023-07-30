@@ -1102,6 +1102,11 @@ footer {
     section#contact {
         width: 90%;
     }
+    #project .danger-box {
+        height: 190px;
+        background-color: #ffefef;
+    }
+
 }
 @media (max-width:610px) {
     #project .slide08 .button{
@@ -1156,9 +1161,13 @@ footer {
     section#contact {
         width: 100%;
     }
-    
     #skills .using-box ul li .title{
         display: none;
+    }
+}
+@media (max-width:435px) {
+    #project .danger-box {
+        height: 210px;
     }
 }
 @media (max-width:430px) {
@@ -1186,6 +1195,16 @@ footer {
         height: 10px;
     }
 }
+@media (max-width:357px) {
+    #project .danger-box {
+        height: 230px;
+    }
+}
+@media (max-width:348px) {
+    #project .danger-box {
+        height: 250px;
+    }
+}
 @media (max-width:340px) {
     #contact .contact{
         display: block;
@@ -1202,5 +1221,15 @@ footer {
     #project .project-detail .project-detail-tag div {
         width: 100%;
         margin-bottom: 5px;
+    }
+}
+@media (max-width:284px) {
+    #project .danger-box {
+        height: 270px;
+    }
+}
+@media (max-width:280px) {
+    #project .danger-box {
+        height: 290px;
     }
 }

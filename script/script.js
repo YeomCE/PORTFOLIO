@@ -115,7 +115,6 @@ window.onload = function () {
     let slideContents = document.querySelectorAll('.slide-content');
     let slideBtnNext = document.querySelector('.slide-btn-next');
     let slideBtnPrev = document.querySelector('.slide-btn-prev');
-    let slidePagination = document.querySelector('.slide-pagination');
     let slideLen = slideContents.length;
     let slideWidth = slideWrap.offsetWidth;
     let slideSpeed = 300;
@@ -127,15 +126,17 @@ window.onload = function () {
     window.addEventListener(`resize`, function () {
         slideWidth = slideWrap.offsetWidth;
         slideList.style.width = slideWidth * (slideLen + 2) + "px";
-        slideContents = document.querySelectorAll('.slide-content');
+        let slideContentsResize = document.querySelectorAll('.slide-content');
 
         for (let i = 0; i < slideLen; i++) {
-            slideContents[i].style.width = slideWidth + "px";
-            slideContents[i].firstElementChild.style.width = slideWidth + "px";
+            slideContentsResize[i].style.width = slideWidth + "px";
+            slideContentsResize[i].firstElementChild.style.width = slideWidth + "px";
         }
-        slideBox.style.height = slideContents[curIndex + 1].offsetHeight + 'px'
+        slideBox.style.height = slideContentsResize[curIndex + 1].offsetHeight + 'px'
         slideList.style.transform = "translate3d(-" + (slideWidth * (curIndex + 1)) + "px, 0px, 0px)";
+        
     });
+
     slideList.style.width = slideWidth * (slideLen + 2) + "px";
     for (let i = 0; i < slideLen; i++) {
         slideContents[i].style.width = slideWidth + "px";
@@ -175,7 +176,6 @@ window.onload = function () {
     // ---------------- PROJECT slide NextButton
     slideBtnNext.addEventListener('click', next)
     function next() {
-        console.log('slideWidth', slideWidth)
         if (curIndex <= slideLen - 1) { // 0 1 2 3 4 
             slideList.style.transition = slideSpeed + 'ms';
             slideList.style.transform = 'translate3d(-' + (slideWidth * (curIndex + 2)) + 'px, 0px, 0px)';
@@ -193,6 +193,8 @@ window.onload = function () {
         curSlide.classList.add('slide-active');
         pageDots[curIndex].classList.add('dot-active');
         slideBox.style.height = slideContents[curIndex].offsetHeight + 'px'
+        
+        
     }
 
 
@@ -221,7 +223,6 @@ window.onload = function () {
 
     ///
     let mouseStart
-    let mouseMove
     let mouseEnd
     let mouseDistance
 
