@@ -459,6 +459,11 @@ section {
 /*------------slide------------*/
 #project .slide-wrap {
     position: relative;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
 }
 
 #project .slide-box {
@@ -680,7 +685,6 @@ section {
 
 
 #project .project-detail .button button {
-    padding: 5px 15px;
     height: 30px;
     border: none;
     border-radius: 0;
@@ -692,6 +696,8 @@ section {
 #project .project-detail .button button a {
     font-family: 'Pretendard-Regular';
     color: white;
+    display: block;
+    padding: 5px 15px;
 }
 
 #project .project-detail .button .page {
